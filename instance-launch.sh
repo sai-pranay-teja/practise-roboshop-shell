@@ -9,7 +9,7 @@ aws ec2 run-instances \
 }
 
 
-for component in frontend; do
+for component in frontend cart catalogue mongodb mysql payment rabbitmq redis shipping user; do
   component=${component}
   create_all
 done
