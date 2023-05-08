@@ -12,3 +12,4 @@ aws ec2 run-instances \
 for component in frontend; do
   component=${component}
   create_all
+done
