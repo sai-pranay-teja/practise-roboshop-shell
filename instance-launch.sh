@@ -13,6 +13,7 @@ create_all() {
     --user-data file:///tmp/user-data 
   
   PUBLIC_IP=$(aws ec2 describe-instances | jq '.Instances[].PublicIpAddress' | sed -e 's/"//g')
+  echo $PUBLIC_IP
   sed -e "s/IPADDRESS/${PUBLIC_IP}/" -e "s/COMPONENT/${COMPONENT}/" -e "s/DOMAIN/${DOMAIN}/" route53.json > /tmp/record.json
   aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/record.json 2>/dev/null
 
