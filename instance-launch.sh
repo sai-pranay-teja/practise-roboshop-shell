@@ -1,5 +1,5 @@
 ZONE_ID="Z02663713JHB580GK666M"
-DOMAIN="Z02663713JHB580GK666M"
+DOMAIN="practise-devops.online"
 
 create_all() { 
   echo -e '#!/bin/bash' >/tmp/user-data
@@ -14,7 +14,7 @@ create_all() {
     | jq '.Instances[].PublicIpAddress' | sed -e 's/"//g')
   
   
-  sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" -e "s/DOMAIN/${DOMAIN}/" route53.json > /tmp/record.json
+  sed -e "s/IPADDRESS/${PUBLIC_IP}/" -e "s/COMPONENT/${COMPONENT}/" -e "s/DOMAIN/${DOMAIN}/" route53.json > /tmp/record.json
   aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/record.json 2>/dev/null
 
   
