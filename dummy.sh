@@ -7,6 +7,6 @@ aws ec2 run-instances \
 
 
 
-PUBLIC_IP=$(aws ec2 describe-instances | jq 'Reservations[].Instances[].PublicIpAddress' | sed -e 's/"//g')
+PUBLIC_IP=$(aws ec2 describe-instances | jq '.Reservations[].Instances[].PublicIpAddress' | sed -e 's/"//g')
 
 echo $PUBLIC_IP
