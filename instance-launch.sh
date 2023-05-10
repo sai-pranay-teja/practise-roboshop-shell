@@ -12,7 +12,7 @@ create_all() {
     --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
     --user-data file:///tmp/user-data 
   
- PUBLIC_IP=$(aws ec2 describe-instances | jq '.Instances[].PublicIpAddress' | sed -e 's/"//g')
+  PUBLIC_IP=$(aws ec2 describe-instances | jq '.Instances[].PublicIpAddress' | sed -e 's/"//g')
   sed -e "s/IPADDRESS/${PUBLIC_IP}/" -e "s/COMPONENT/${COMPONENT}/" -e "s/DOMAIN/${DOMAIN}/" route53.json > /tmp/record.json
   aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/record.json 2>/dev/null
 
