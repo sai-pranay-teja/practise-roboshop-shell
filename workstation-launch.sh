@@ -1,4 +1,15 @@
-aws iam create-instance-profile --instance-profile-name Full_access
+
+
+
+if [$? -eq 0]
+then
+  aws iam remove-role-from-instance-profile --instance-profile-name Full_access --role-name Full-access
+  aws iam delete-instance-profile --instance-profile-name Full_access
+  aws iam create-instance-profile --instance-profile-name Full_access
+else
+  aws iam create-instance-profile --instance-profile-name Full_access
+fi
+  
 aws iam add-role-to-instance-profile \
     --instance-profile-name Full_access \
     --role-name Full-access
