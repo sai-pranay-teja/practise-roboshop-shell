@@ -1,3 +1,6 @@
+source common.sh
+
+
 dnf module disable mysql -y 
 cp ${dir}/mysql.repo /etc/yum.repos.d/mysql.repo
 yum install mysql-community-server -y
