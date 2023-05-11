@@ -6,7 +6,7 @@ create_all() {
   echo -e "\nset-hostname ${COMPONENT}" >>/tmp/user-data
   PRIVATE_IP=$(aws ec2 run-instances \
     --image-id ami-0b5a2b5b8f2be4ec2 \
-    --instance-type t2.micro \
+    --instance-type t3.micro \
     --security-group-ids sg-036e9bfb37a180657 \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" "ResourceType=volume,Tags=[{Key=Name,Value=${COMPONENT}}]" \
     --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
