@@ -13,4 +13,6 @@ cp ${dir}/user.service /etc/systemd/system/user.service
 systemctl daemon-reload
 systemctl enable user
 systemctl start user
-mongo --host MONGODB-SERVER-IPADDRESS </app/schema/user.js
+cp ${dir}/mongo.repo /etc/yum.repos.d/mongo.repo
+yum install mongodb-org-shell -y
+mongo --host mongodb.practise-devops.online </app/schema/user.js
