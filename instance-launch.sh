@@ -31,7 +31,7 @@ create_all() {
 
 
 for component in frontend cart catalogue mongodb mysql payment rabbitmq redis shipping user; do
-  component=${component}
+  COMPONENT=${component}
   create_all
 done
 
