@@ -30,12 +30,12 @@ create_all() {
 }
 
 
-# for component in frontend cart catalogue mongodb mysql payment rabbitmq redis shipping user; do
-#   component=${component}
-#   create_all
-# done
-
-for component in frontend; do
-  COMPONENT=${component}
+for component in frontend cart catalogue mongodb mysql payment rabbitmq redis shipping user; do
+  component=${component}
   create_all
 done
+
+# for component in frontend; do
+#   COMPONENT=${component}
+#   create_all
+# done
