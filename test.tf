@@ -29,7 +29,8 @@ resource "aws_spot_instance_request" "name_2" {
     }
     inline = [ 
       "sudo git clone https://github.com/sai-pranay-teja/practise-roboshop-shell",
-      "sudo bash practise-roboshop-shell/frontend.sh"
+      "sudo cd practise-roboshop-shell/",
+      "sudo bash frontend.sh"
      ]
     
   }
