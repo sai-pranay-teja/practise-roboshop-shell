@@ -1,7 +1,7 @@
 dir=$(pwd)/conf-files
 
 status_check(){
-    if [$? -eq 0]
+    if [$? -eq 0]; then
        echo SUCCESS
     else
        echo FAILURE
@@ -12,7 +12,7 @@ status_check(){
 
 basic_setup(){
     id roboshop
-    if [$? -eq 0]
+    if [$? -eq 0]; then
       echo The user "roboshop" exists
     else
       useradd roboshop
