@@ -20,6 +20,20 @@ resource "aws_spot_instance_request" "name_2" {
     delete = "10m"
   }
 
+  provisioner "remote-exec" {
+    connection {
+      host=aws_spot_instance_request.name_2.public_ip
+      user="centos"
+      password="DevOps321"
+    
+    }
+    inline = [ 
+      "sudo git clone https://github.com/sai-pranay-teja/practise-roboshop-shell",
+      "sudo bash practise-roboshop-shell/frontend.sh"
+     ]
+    
+  }
+
 }
 
 output "public_ip"{
