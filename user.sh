@@ -1,5 +1,11 @@
 source common.sh
 
+component=user
+db_type="mongo"
+nodejs
+
+
+
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 yum install nodejs -y
 useradd roboshop

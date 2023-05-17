@@ -1,18 +1,5 @@
 source common.sh
 
-yum install maven -y
-useradd roboshop
-mkdir /app
-rm -rf /app/*
-curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip 
-cd /app 
-unzip /tmp/shipping.zip
-mvn clean package 
-mv target/shipping-1.0.jar shipping.jar 
-cp ${dir}/shipping.service /etc/systemd/system/shipping.service
-systemctl daemon-reload
-systemctl enable shipping 
-systemctl start shipping
-yum install mysql -y 
-mysql -h mysql.practise-devops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql 
-systemctl restart shipping
+component=shipping
+db_type="mysql"
+java
