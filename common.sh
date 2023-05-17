@@ -60,7 +60,7 @@ systemd(){
 }
 
 schema_setup(){
-    if [${db_type} == "mongo"]
+    if [${db_type} == "mongo"]; then
       cp ${dir}/mongo.repo /etc/yum.repos.d/mongo.repo
 
       status_check
@@ -73,7 +73,7 @@ schema_setup(){
 
       status_check
       
-    elif [${db_type} == "mysql"]
+    elif [${db_type} == "mysql"]; then
       yum install mysql -y
 
       status_check
