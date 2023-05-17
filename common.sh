@@ -1,7 +1,7 @@
 dir=$(pwd)/conf-files
 
 status_check(){
-    if [$? -eq 0]; then
+    if [ $? -eq 0 ]; then
        echo SUCCESS
     else
        echo FAILURE
@@ -12,7 +12,7 @@ status_check(){
 
 basic_setup(){
     id roboshop
-    if [$? -eq 0]; then
+    if [ $? -eq 0 ]; then
       echo The user "roboshop" exists
     else
       useradd roboshop
@@ -60,7 +60,7 @@ systemd(){
 }
 
 schema_setup(){
-    if [${db_type} == "mongo"]; then
+    if [ ${db_type} == "mongo" ]; then
       cp ${dir}/mongo.repo /etc/yum.repos.d/mongo.repo
 
       status_check
@@ -73,7 +73,7 @@ schema_setup(){
 
       status_check
       
-    elif [${db_type} == "mysql"]; then
+    elif [ ${db_type} == "mysql" ]; then
       yum install mysql -y
 
       status_check
