@@ -10,7 +10,5 @@ systemctl enable mysqld
 status_check
 mysql_secure_installation --set-root-pass RoboShop@1
 status_check
-mysql -uroot -pRoboShop@1
-status_check
 systemctl restart mysqld
 status_check
